@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { persona } from '../models/persona.model';
 
@@ -19,12 +19,12 @@ export class PersonaService {
     return this.http.get(this.URL + 'traer');
   }
   
-  public getPersonaId(form:FormGroup){
-    return this.http.get<FormGroup>(this.URL + form);
+  public getPersonaId(Persona:persona){
+    return this.http.get<persona>(this.URL + Persona.id);
   }
   
-  public editPersona(form:FormGroup){
-    return this.http.put<FormGroup>(this.URL + 'editar/'+ form.value.id , form);
+  public editPersona(Persona:persona){
+    return this.http.put<persona>(this.URL + 'editar/'+ Persona.id , Persona);
   }
 
 }

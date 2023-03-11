@@ -18,12 +18,12 @@ export class AcercaDeComponent implements OnInit{
 
   constructor(public personaService : PersonaService, private router:Router, private formBuilder : FormBuilder){
     this.form = this.formBuilder.group({
-      id:['',[Validators.required]],
+      id:['1',[Validators.required]],
+      nombre:['',[Validators.required]],
       apellido:['',[Validators.required]],
       img:['',[Validators.required]],
-      nombre:['',[Validators.required]],
-      info:['',[Validators.required]],
-      titulo:['',[Validators.required]]
+      titulo:['',[Validators.required]],
+      info:['',[Validators.required]]
     })
 
   }
@@ -32,14 +32,23 @@ export class AcercaDeComponent implements OnInit{
     this.personaService.getPersona().subscribe(data => {
       console.log(data); 
       this.Persona = data;
-    });  
+    }); 
+    
   }
 
   Editar(){
-      console.log("corriendo"); 
-      this.personaService.editPersona(this.form).subscribe(data => {
-        console.log("corriendo 2"); 
-        this.router.navigate([''])
+      console.log(this.form); 
+      this.Persona = {
+        "id": this.form.value.id,
+        "nombre": this.form.value.nombre,
+        "apellido": this.form.value.apellido,
+        "img": this.form.value.img,
+        "titulo": this.form.value.titulo,
+        "info": this.form.value.info,
+        }
+      this.personaService.editPersona(this.Persona).subscribe(data => {
+        this.router.navigate(['']);
+        location.reload();
       });
    }
 }
