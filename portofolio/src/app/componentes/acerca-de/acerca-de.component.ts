@@ -18,7 +18,7 @@ export class AcercaDeComponent implements OnInit{
 
   constructor(public personaService : PersonaService, private router:Router, private formBuilder : FormBuilder){
     this.form = this.formBuilder.group({
-      id:['1',[Validators.required]],
+      id:['',[Validators.required]],
       nombre:['',[Validators.required]],
       apellido:['',[Validators.required]],
       img:['',[Validators.required]],

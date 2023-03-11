@@ -19,7 +19,7 @@ export class PersonaService {
     return this.http.get(this.URL + 'traer');
   }
   
-  public getPersonaId(Persona:persona){
+  public getPersonaById(Persona:persona){
     return this.http.get<persona>(this.URL + Persona.id);
   }
   
