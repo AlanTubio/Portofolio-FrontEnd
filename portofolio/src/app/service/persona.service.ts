@@ -19,11 +19,11 @@ export class PersonaService {
     return this.http.get(this.URL + 'traer');
   }
   
-  public getPersonaById(Persona:persona){
+  public getPersonaById(Persona:persona): Observable<any>{
     return this.http.get<persona>(this.URL + Persona.id);
   }
   
-  public editPersona(Persona:persona){
+  public editPersona(Persona:persona): Observable<any>{
     return this.http.put<persona>(this.URL + 'editar/'+ Persona.id , Persona);
   }
 

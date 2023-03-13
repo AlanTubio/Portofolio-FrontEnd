@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 
 const routes: Routes = [
-  {path:'', component: AppComponent}
+  {path:'acerca', component: AcercaDeComponent}
 ];
 
 @NgModule({

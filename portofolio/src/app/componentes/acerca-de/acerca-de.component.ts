@@ -29,8 +29,7 @@ export class AcercaDeComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.personaService.getPersona().subscribe(data => {
-      console.log(data); 
+    this.personaService.getPersona().subscribe(data => { 
       this.Persona = data;
     }); 
     
@@ -47,8 +46,10 @@ export class AcercaDeComponent implements OnInit{
         "info": this.form.value.info,
         }
       this.personaService.editPersona(this.Persona).subscribe(data => {
-        this.router.navigate(['']);
-        location.reload();
+        this.router.navigate(['acerca']);
+        this.personaService.getPersona().subscribe(data => {
+          this.Persona = data;
+        }); 
       });
    }
 }
