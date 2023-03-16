@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-experiencias',
@@ -30,6 +31,8 @@ export class ExperienciasComponent implements OnInit{
 
   ngOnInit(): void {
     this.GetExperiencia();
+    AOS.init()
+    window.addEventListener('load', AOS.refresh)
   }
 
   GetExperiencia():void{
