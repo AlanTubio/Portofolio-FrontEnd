@@ -1,26 +1,29 @@
 <div class="container-fluid">
-    <div class="row justify-content-center align-items-center text-white " style="height: 850px; 
-                                                                                  display: flex;
-                                                                                  justify-content: center;
-                                                                                  align-items: center;" id="perfil">
-        <div class="col-xs-4 col-sm-8 col-md-7 col-lg-8 col-xl-5 col-xxl-4">
-            <div  data-aos="fade-up" >
-                <img [src]="Persona[0].img" class="rounded-circle img-fluid " alt="perfil" style="width:350px; height:350px;">
+    <div class="row justify-content-md-center text-white" style="height: 850px; 
+                                                                 display: flex;
+                                                                 justify-content: center;
+                                                                 align-items: center;" id="perfil">
+        <div class="col-md-auto">
+            <div  data-aos="fade-up" data-aos-delay="200" class="">
+                <img [src]="Persona[0].img" class="rounded-circle img-fluid" alt="perfil" style="width:350px; height:350px; 
+                                                                                                box-shadow: 20px 10px 50px 
+                                                                                                rgba(0,0,0,0.50);
+                                                                                                filter:grayscale(40%);">                                                                                                            
             </div>
         </div> 
-        <div class="col-sm-4 col-xxl-3 row text-start" >
-            <div class="align-self-center text-dark" >
-                <h1 class="display-1" data-aos="fade-right" data-aos-delay="300" data-aos-easing="ease-in-sine">{{Persona[0].nombre}} {{Persona[0].apellido}}</h1>
-                <h3 style="color: rgb(126, 8, 0);" data-aos="fade-right" data-aos-delay="600">{{Persona[0].titulo}}</h3>
-                <h5 class="lead" data-aos="fade-right" data-aos-delay="1000" data-aos-offset="0">{{Persona[0].info}}</h5>
-                <button class = "btn btn-success rounded-circle" data-aos="fade-right" data-aos-delay="1200" data-aos-offset="0" data-bs-toggle="modal" data-bs-target="#Editar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 20">
+        <div class="col-md-auto text-start" >
+            <div class="text-dark" >
+                <h1 class="display-1" data-aos="fade-left" data-aos-delay="400" data-aos-easing="ease-in-sine">{{Persona[0].nombre}} {{Persona[0].apellido}}</h1>
+                <h3 style="color: rgb(126, 8, 0);" data-aos="fade-left" data-aos-delay="1000">{{Persona[0].titulo}}</h3>
+                <h5 class="lead" data-aos="fade-left" data-aos-delay="1500" data-aos-offset="0">{{Persona[0].info}}</h5>
+                <button class = "btn btn-outline-success rounded-circle " data-aos="flip-left" data-aos-delay="2000" data-aos-offset="0" data-bs-toggle="modal" data-bs-target="#Editar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 20">
                 <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                 </svg>  </button>
             </div>
         </div>
     </div> 
 </div>               
-    <!-- Modal style="background-color:rgb(226, 223, 223);" style="background-image: url('./assets/img/bgimg6.jpg')"-->
+    <!-- Modal -->
     <div class="modal fade" id="Editar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

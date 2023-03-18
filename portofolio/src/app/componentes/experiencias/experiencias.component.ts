@@ -12,7 +12,6 @@ import * as AOS from 'aos';
 export class ExperienciasComponent implements OnInit{
   
   Experiencia:any;
-  Experiencia2:any;
   edit:any;
   agregar:any;
   ExperienciaById:any;
@@ -31,8 +30,6 @@ export class ExperienciasComponent implements OnInit{
 
   ngOnInit(): void {
     this.GetExperiencia();
-    AOS.init()
-    window.addEventListener('load', AOS.refresh)
   }
 
   GetExperiencia():void{

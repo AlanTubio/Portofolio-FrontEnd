@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { experiencia } from '../models/experiencia';
 
 @Injectable({
@@ -9,7 +8,6 @@ import { experiencia } from '../models/experiencia';
 })
 export class ExperienciaService {
 
-  private _refresh$ = new Subject<void>();
   URL = 'http://localhost:8080/experiencias/';
   constructor(private http: HttpClient) { }
 
@@ -29,7 +27,7 @@ export class ExperienciaService {
     return this.http.delete<any>(this.URL + 'borrar/'+ id)
   }
 
-  public getExperienciaById(id:number): Observable<any>{
+  public getExperienciaById(id:number){
     return this.http.get<number>(this.URL + id)
   }
 }
