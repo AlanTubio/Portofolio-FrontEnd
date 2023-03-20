@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 import { HabilidadService } from 'src/app/service/habilidad.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class HabilidadesComponent implements OnInit{
   HabilidadById:any;
   formHabilidad:FormGroup;
 
-  constructor(public habilidadService : HabilidadService, private router:Router, private formBuilder: FormBuilder ){
+  constructor(public habilidadService : HabilidadService, private router:Router, private formBuilder: FormBuilder, config:NgbProgressbarConfig ){
     this.formHabilidad = this.formBuilder.group({
       id:['',[]],
       nombre:['',[Validators.required]],
@@ -27,18 +28,19 @@ export class HabilidadesComponent implements OnInit{
   
   ngOnInit(): void {
     this.GetHabilidad();
+    console.log("funciona");
   }
  
   GetHabilidad():void{
-    this.habilidadService.getHabilidad().subscribe(data => {
-      console.log(data); 
-      this.Habilidad = data;
+    this.habilidadService.getHabilidad().subscribe(result => {
+      console.log(result); 
+      this.Habilidad = result;
     });
   }
 
   AgregarHabilidad(event : Event){
     event.preventDefault;
-    console.log("agregar exp");
+    console.log("agregar hab");
     this.agregarHabilidad = {
       "nombre": this.formHabilidad.value.nombre,
       "img": this.formHabilidad.value.img,
