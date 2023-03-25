@@ -45,14 +45,20 @@
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-aos="fade-down" data-aos-delay="1300">
+                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#login" data-aos="fade-down" data-aos-delay="1300">
                 Login
                 </button>
+                </li>  
+                <li class="nav-item mx-0 mx-lg-1">
+                    <!-- Button trigger modal -->
+                    <button type="button" (click)="Logout()" class="btn btn-outline-light" id="logout" data-aos="fade-down" data-aos-delay="1300">
+                    Logout
+                    </button>
                 </li>  
             </ul>
      
             <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -60,25 +66,19 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Correo</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                                    <div id="idEH" class="form-text">Debe ser un correo válido.</div>
+                            <form [formGroup]="formlogin" (ngSubmit)="Login()">
+                                <div class="form-floating mb-3">
+                                    <input type="email" formControlName="usuario" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">Nombre de usuario</label>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="inputPassword" class="col-form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="inputPassword">
+                                <div class="form-floating">
+                                    <input type="password" formControlName="contra" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword">Contraseña</label>
                                 </div>
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+                                <div class="modal-footer"> 
+                                    <button type="button" class="btn btn-primary" [disabled]="!this.formlogin.valid">Iniciar Sesión</button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="modal-footer"> 
-                            <button type="button" class="btn btn-primary">Iniciar Sesión</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

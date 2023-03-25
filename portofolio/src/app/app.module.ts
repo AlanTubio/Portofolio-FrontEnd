@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonaService } from './service/persona.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
+import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EstudiosComponent,
     HabilidadesComponent,
     IdiomaComponent,
-    ProyectosComponent
+    ProyectosComponent,
+    PortfolioComponent,
+    IniciarSesionComponent
   ],
   imports: [
     BrowserModule,

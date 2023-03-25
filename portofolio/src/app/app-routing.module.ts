@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
+import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 
 const routes: Routes = [
-  {path:'acerca', component: AcercaDeComponent}
+  {path:'portfolio', component: PortfolioComponent}
 ];
 
 @NgModule({

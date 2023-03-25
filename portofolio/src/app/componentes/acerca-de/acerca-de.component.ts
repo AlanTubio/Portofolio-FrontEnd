@@ -46,7 +46,6 @@ export class AcercaDeComponent implements OnInit{
         "info": this.form.value.info,
         }
       this.personaService.editPersona(this.Persona).subscribe(data => {
-        this.router.navigate(['acerca']);
         this.personaService.getPersona().subscribe(data => {
           this.Persona = data;
         }); 
