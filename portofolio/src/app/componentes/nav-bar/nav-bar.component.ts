@@ -51,6 +51,7 @@ export class NavBarComponent implements OnInit{
         // ...
       })
       .catch((error) => {
+        console.log("error login");
         const errorCode = error.code;
         const errorMessage = error.message;
       }); 

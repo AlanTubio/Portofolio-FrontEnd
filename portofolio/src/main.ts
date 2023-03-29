@@ -4,6 +4,7 @@ import { AppModule } from './app/app.module';
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 import "firebase/auth";
+import { getAuth } from 'firebase/auth';
 
 
 platformBrowserDynamic().bootstrapModule(AppModule)
@@ -17,7 +18,10 @@ const firebaseConfig = {
   storageBucket: "portfolio-df72c.appspot.com",
   messagingSenderId: "778524298476",
   appId: "1:778524298476:web:ad499ef2fcc30d2750a9c9"
-};
+};  
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig); 
+export const auth = getAuth(app);
+
+/* */
