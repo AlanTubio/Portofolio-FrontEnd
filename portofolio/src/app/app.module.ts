@@ -16,6 +16,10 @@ import { PersonaService } from './service/persona.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { environment } from './environments/environments';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +38,8 @@ import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-ses
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
     FormsModule,
     NgbModule,
     ReactiveFormsModule

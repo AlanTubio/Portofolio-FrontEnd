@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
 import * as AOS from 'aos';
+import { getAuth } from 'firebase/auth';
 
 @Component({
   selector: 'app-experiencias',
@@ -30,6 +31,21 @@ export class ExperienciasComponent implements OnInit{
 
   ngOnInit(): void {
     this.GetExperiencia();
+    const auth = getAuth();
+    const buttonEditar = document.querySelectorAll<HTMLElement>('.editar');
+    const buttonEliminiar = document.querySelectorAll<HTMLElement>('.eliminar');
+    
+
+    auth.onAuthStateChanged(user => {
+
+      if (user) {
+        buttonEditar.forEach(link => link.style.display = 'block');
+        buttonEliminiar.forEach(link => link.style.display = 'block');
+      } else {
+        buttonEditar.forEach(link => link.style.display = 'none');
+        buttonEliminiar.forEach(link => link.style.display = 'none');
+      }
+    });
   }
 
   GetExperiencia():void{

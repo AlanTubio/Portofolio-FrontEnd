@@ -45,13 +45,13 @@
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#login" data-aos="fade-down" data-aos-delay="1300">
+                <button type="button" class="btn btn-outline-light loginb" style="display: none;" data-bs-toggle="modal" data-bs-target="#login" data-aos="fade-down" data-aos-delay="1300">
                 Login
                 </button>
                 </li>  
                 <li class="nav-item mx-0 mx-lg-1">
                     <!-- Button trigger modal -->
-                    <button type="button" (click)="Logout()" class="btn btn-outline-light" id="logout" data-aos="fade-down" data-aos-delay="1300">
+                    <button type="button" (click)="Logout()" class="btn btn-outline-light logout" style="display: none;" data-aos="fade-down" data-aos-delay="1300">
                     Logout
                     </button>
                 </li>  
@@ -68,12 +68,29 @@
                         <div class="modal-body">
                             <form [formGroup]="formlogin" (ngSubmit)="Login()">
                                 <div class="form-floating mb-3">
-                                    <input type="email" formControlName="usuario" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <input type="email" formControlName="usuario" class="form-control" id="floatingInput" placeholder="name@example.com"
+                                     [ngClass]="{'is-valid': !this.formlogin.get('usuario')?.invalid , 'is-invalid': this.formlogin.get('usuario')?.invalid}" />
+                                    <div *ngIf="this.formlogin.get('usuario')?.errors?.['required'] && this.formlogin.get('usuario')?.touched" class="invalid-feedback">
+                                        Este campo es obligatorio!
+                                    </div>   
+                                    <div *ngIf="this.formlogin.get('usuario')?.errors?.['email'] && this.formlogin.get('usuario')?.touched" class="invalid-feedback">
+                                        Debe ser un correo valido!
+                                    </div>    
                                     <label for="floatingInput">Nombre de usuario</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="password" formControlName="contra" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <input type="password" formControlName="contra" class="form-control contra" id="floatingPassword" placeholder="Password" 
+                                    [ngClass]="{'is-valid': !this.formlogin.get('contra')?.invalid , 'is-invalid': this.formlogin.get('contra')?.invalid}" >
                                     <label for="floatingPassword">Contraseña</label>
+                                    <div *ngIf="this.formlogin.get('contra')?.errors?.['required'] && this.formlogin.get('contra')?.touched" class="invalid-feedback">
+                                        Este campo es obligatorio!
+                                    </div>
+                                    <div class="invalid-feedback usuario" style="display: block;">
+                                        {{resultado}}
+                                    </div>     
+                                    <div class="valid-feedback usuario" style="display: block;">
+                                        {{resultado2}}
+                                    </div> 
                                 </div>
                                 <div class="modal-footer"> 
                                     <button type="submit" class="btn btn-primary" [disabled]="!this.formlogin.valid">Iniciar Sesión</button>
