@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
+import { getAuth } from 'firebase/auth';
 import { HabilidadService } from 'src/app/service/habilidad.service';
 
 @Component({
@@ -16,6 +17,9 @@ export class HabilidadesComponent implements OnInit{
   agregarHabilidad:any;
   HabilidadById:any;
   formHabilidad:FormGroup;
+  editarHab: string;
+  eliminarHab: string;
+  agregarHab: string;
 
   constructor(public habilidadService : HabilidadService, private router:Router, private formBuilder: FormBuilder, config:NgbProgressbarConfig ){
     this.formHabilidad = this.formBuilder.group({
@@ -27,8 +31,19 @@ export class HabilidadesComponent implements OnInit{
   }
   
   ngOnInit(): void {
+    const auth = getAuth();
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.editarHab = "inline";
+        this.eliminarHab = "inline";
+        this.agregarHab = "inline";
+      } else {
+        this.editarHab = "none";
+        this.eliminarHab = "none";
+        this.agregarHab = "none";
+      }
+    });
     this.GetHabilidad();
-    console.log("funciona");
   }
  
   GetHabilidad():void{

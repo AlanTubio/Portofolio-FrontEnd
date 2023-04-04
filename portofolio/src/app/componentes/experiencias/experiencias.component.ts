@@ -17,6 +17,9 @@ export class ExperienciasComponent implements OnInit{
   agregar:any;
   ExperienciaById:any;
   formexp:FormGroup;
+  editExp: string;
+  eliminarExp: string;
+  agregarExp: string;
   
   constructor(public experienciaService : ExperienciaService, private router:Router, private formBuilder: FormBuilder ){
     this.formexp = this.formBuilder.group({
@@ -29,23 +32,21 @@ export class ExperienciasComponent implements OnInit{
     })
   }
 
-  ngOnInit(): void {
-    this.GetExperiencia();
+  ngOnInit(): void { 
     const auth = getAuth();
-    const buttonEditar = document.querySelectorAll<HTMLElement>('.editar');
-    const buttonEliminiar = document.querySelectorAll<HTMLElement>('.eliminar');
-    
-
     auth.onAuthStateChanged(user => {
-
       if (user) {
-        buttonEditar.forEach(link => link.style.display = 'block');
-        buttonEliminiar.forEach(link => link.style.display = 'block');
+        this.editExp = "inline";
+        this.eliminarExp = "inline";
+        this.agregarExp = "inline";
       } else {
-        buttonEditar.forEach(link => link.style.display = 'none');
-        buttonEliminiar.forEach(link => link.style.display = 'none');
+        this.editExp = "none";
+        this.eliminarExp = "none";
+        this.agregarExp = "none";
       }
     });
+
+    this.GetExperiencia();
   }
 
   GetExperiencia():void{

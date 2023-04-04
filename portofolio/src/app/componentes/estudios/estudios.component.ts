@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { getAuth } from 'firebase/auth';
 import { EstudioService } from 'src/app/service/estudio.service';
 
 @Component({
@@ -15,6 +16,9 @@ export class EstudiosComponent implements OnInit{
   agregarEstudio:any;
   EstudioById:any;
   formEstudio:FormGroup;
+  editarEst: string;
+  eliminarEst: string;
+  agregarEst: string;
 
   constructor(public estudioService : EstudioService, private router:Router, private formBuilder: FormBuilder ){
     this.formEstudio = this.formBuilder.group({
@@ -28,6 +32,18 @@ export class EstudiosComponent implements OnInit{
   }
   
   ngOnInit(): void {
+    const auth = getAuth();
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.editarEst = "inline";
+        this.eliminarEst = "inline";
+        this.agregarEst = "inline";
+      } else {
+        this.editarEst = "none";
+        this.eliminarEst = "none";
+        this.agregarEst = "none";
+      }
+    });
     this.GetEstudio();
   }
  

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { getAuth } from 'firebase/auth';
 import { IdiomaService } from 'src/app/service/idioma.service';
 
 
@@ -16,6 +17,9 @@ export class IdiomaComponent implements OnInit{
   agregarIdioma:any;
   IdiomaById:any;
   formIdioma:FormGroup;
+  editarIdi: string;
+  eliminarIdi: string;
+  agregarIdi: string;
 
   constructor(public idiomaService : IdiomaService, private router:Router, private formBuilder: FormBuilder ){
     this.formIdioma = this.formBuilder.group({
@@ -27,6 +31,18 @@ export class IdiomaComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    const auth = getAuth();
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.editarIdi = "inline";
+        this.eliminarIdi = "inline";
+        this.agregarIdi = "inline";
+      } else {
+        this.editarIdi = "none";
+        this.eliminarIdi = "none";
+        this.agregarIdi = "none";
+      }
+    });
     this.GetIdioma();
   }
 

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { NavBarService } from 'src/app/service/nav-bar.service';
 
 @Component({
@@ -33,13 +32,13 @@ export class NavBarComponent implements OnInit {
     
 
     auth.onAuthStateChanged(user => {
-
       if (user) {
         console.log("Esta logueado");
         logoutLink.forEach(link => link.style.display = 'block');
         loginLink.forEach(link => link.style.display = 'none');
         buttonEditar.forEach(link => link.style.display = 'block');
         buttonEliminiar.forEach(link => link.style.display = 'block');
+        
       } else {
         console.log("No esta logueado");
         logoutLink.forEach(link => link.style.display = 'none');

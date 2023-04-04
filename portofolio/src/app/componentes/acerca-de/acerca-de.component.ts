@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { persona } from 'src/app/models/persona.model';
 import { PersonaService } from 'src/app/service/persona.service';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -32,7 +31,6 @@ export class AcercaDeComponent implements OnInit{
     this.personaService.getPersona().subscribe(data => { 
       this.Persona = data;
     }); 
-    
   }
 
   Editar(){

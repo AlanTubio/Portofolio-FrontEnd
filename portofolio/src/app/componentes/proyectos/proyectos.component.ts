@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { getAuth } from 'firebase/auth';
 import { ProyectosService } from 'src/app/service/proyectos.service';
 
 @Component({
@@ -15,6 +16,9 @@ export class ProyectosComponent implements OnInit{
   agregarProyecto:any;
   ProyectoById:any;
   formProyecto:FormGroup;
+  editarProy: string;
+  eliminarProy: string;
+  agregarProy: string;
 
   constructor(public proyectoService : ProyectosService, private router:Router, private formBuilder: FormBuilder ){
     this.formProyecto = this.formBuilder.group({
@@ -27,6 +31,18 @@ export class ProyectosComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    const auth = getAuth();
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.editarProy = "inline";
+        this.eliminarProy = "inline";
+        this.agregarProy = "inline";
+      } else {
+        this.editarProy = "none";
+        this.eliminarProy = "none";
+        this.agregarProy = "none";
+      }
+    });
     this.GetProyecto();
   }
  
