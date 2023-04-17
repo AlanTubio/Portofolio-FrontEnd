@@ -10,7 +10,7 @@ import { persona } from '../models/persona.model';
 
 export class PersonaService {
   
-  URL = 'http://localhost:8080/personas/';
+  URL = 'https://port-backend-rtdl.onrender.com/personas/';
   
   constructor(private http: HttpClient) { 
   }

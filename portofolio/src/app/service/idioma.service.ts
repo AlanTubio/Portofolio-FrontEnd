@@ -8,7 +8,7 @@ import { idioma } from '../models/idioma';
 })
 export class IdiomaService {
 
-  URL = 'http://localhost:8080/idiomas/';
+  URL = 'https://port-backend-rtdl.onrender.com/idiomas/';
   constructor(private http: HttpClient) { }
 
   public getIdioma(): Observable<any>{

@@ -8,7 +8,7 @@ import { habilidad } from '../models/habilidad';
 })
 export class HabilidadService {
 
-  URL = 'http://localhost:8080/habilidades/';
+  URL = 'https://port-backend-rtdl.onrender.com/habilidades/';
   constructor(private http: HttpClient) { }
 
   public getHabilidad(): Observable<any>{

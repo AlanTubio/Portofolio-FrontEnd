@@ -17,7 +17,7 @@
                         <p class="card-text">{{proy.descripcion}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group ">
-                                <a [href]="proy.link" class="btn btn-sm btn-outline-info">View</a>
+                                <a [href]="proy.link" target="_blank" class="btn btn-sm btn-outline-info">View</a>
                                 <button [style]="'display:' + editarProy" (click)="GetEditProyecto(proy.id)" class="btn btn-sm btn-outline-success"
                                     data-bs-toggle="modal" data-bs-target="#EditarProyecto"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

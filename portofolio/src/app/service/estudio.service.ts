@@ -8,7 +8,7 @@ import { estudio } from '../models/estudio';
 })
 export class EstudioService {
 
-  URL = 'http://localhost:8080/estudios/';
+  URL = 'https://port-backend-rtdl.onrender.com/estudios/';
   constructor(private http: HttpClient) { }
 
   public getEstudio(): Observable<any>{

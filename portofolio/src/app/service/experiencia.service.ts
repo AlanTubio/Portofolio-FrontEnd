@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { experiencia } from '../models/experiencia';
 
 @Injectable({
@@ -8,22 +8,23 @@ import { experiencia } from '../models/experiencia';
 })
 export class ExperienciaService {
 
-  URL = 'http://localhost:8080/experiencias/';
+  URL = 'https://port-backend-rtdl.onrender.com/experiencias/';
   constructor(private http: HttpClient) { }
 
-  public getExperiencia(): Observable<any>{
-    return this.http.get(this.URL + 'traer');
+ 
+  getExperiencia(): Observable<any>{
+    return this.http.get(this.URL + 'traer')
   }
 
-  public addExperiencia(agregar:any){
+  addExperiencia(agregar:any){
     return this.http.post<experiencia>(this.URL + 'crear', agregar)
   }
   
-  public editExperiencia(edit:experiencia){
+  editExperiencia(edit:experiencia){
     return this.http.put<experiencia>(this.URL + 'editar/'+ edit.id , edit)
   }
   
-  public Eliminar(id:any){
+  Eliminar(id:any){
     return this.http.delete<any>(this.URL + 'borrar/'+ id)
   }
 

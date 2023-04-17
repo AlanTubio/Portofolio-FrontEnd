@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
 import * as AOS from 'aos';
 import { getAuth } from 'firebase/auth';
+import { reload } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-experiencias',
@@ -45,7 +46,6 @@ export class ExperienciasComponent implements OnInit{
         this.agregarExp = "none";
       }
     });
-
     this.GetExperiencia();
   }
 
@@ -56,7 +56,7 @@ export class ExperienciasComponent implements OnInit{
     });
   }
 
-  Agregarexp(event : Event){
+  Agregarexp(event : Event):void{
     event.preventDefault;
     console.log("agregar exp");
     this.agregar = {
@@ -66,9 +66,10 @@ export class ExperienciasComponent implements OnInit{
       "periodo_inicio": this.formexp.value.periodo_inicio,
       "periodo_fin": this.formexp.value.periodo_fin,
       }
-    this.experienciaService.addExperiencia(this.agregar).subscribe(data => {
-      console.log(data); 
+    this.experienciaService.addExperiencia(this.agregar).subscribe(() => {
+      console.log("agregado"); 
     });
+    console.log("agregado"); 
     location.reload();
   }
 
@@ -97,7 +98,7 @@ export class ExperienciasComponent implements OnInit{
     this.experienciaService.editExperiencia(this.edit).subscribe(data => {
       console.log("Editado"); 
     });
-    location. reload();
+    location.reload();
  }
 
   GetEdit(id:number){
