@@ -65,7 +65,7 @@ export class ProyectosComponent implements OnInit{
     this.proyectoService.addProyecto(this.agregarProyecto).subscribe(data => {
       console.log(data); 
     });
-    location.reload();
+    setTimeout(this.recargar, 2000);
   }
 
   vaciarForm(){
@@ -78,6 +78,10 @@ export class ProyectosComponent implements OnInit{
     this.proyectoService.Eliminar(id).subscribe(data => {
       console.log(data); 
     });
+    setTimeout(this.recargar, 2000);
+  }
+
+  recargar(){ 
     location.reload();
   }
 
@@ -90,9 +94,9 @@ export class ProyectosComponent implements OnInit{
       "link": this.formProyecto.value.link,
       }
     this.proyectoService.editProyecto(this.editProyecto).subscribe(data => {
-      console.log("Editado"); 
+      console.log("Editado");
+      location.reload(); 
     });
-    location. reload();
  }
 
   GetEditProyecto(id:number){

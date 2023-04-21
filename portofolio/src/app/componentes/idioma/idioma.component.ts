@@ -48,14 +48,15 @@ export class IdiomaComponent implements OnInit{
 
   GetIdioma():void{
     this.idiomaService.getIdioma().subscribe(info => {
-      console.log(info); 
+      console.log(info);  
       this.Idioma = info;
+      console.log("esta imprimiendo"); 
     });
   }
 
   AgregarIdioma(event : Event){
     event.preventDefault;
-    console.log("agregar exp");
+    console.log("agregar idioma");
     this.agregarIdioma = {
       "nombre": this.formIdioma.value.nombre,
       "descripcion": this.formIdioma.value.descripcion,
@@ -64,7 +65,7 @@ export class IdiomaComponent implements OnInit{
     this.idiomaService.addIdioma(this.agregarIdioma).subscribe(data => {
       console.log(data); 
     });
-    location.reload();
+    setTimeout(this.recargar, 2000);
   }
 
   vaciarForm(){
@@ -73,10 +74,16 @@ export class IdiomaComponent implements OnInit{
   }
 
   EliminarIdioma(){
+    console.log("eliminar");
     const id = this.formIdioma.value.id;
     this.idiomaService.Eliminar(id).subscribe(data => {
-      console.log(data); 
+       console.log(data); 
+      console.log("eliminado"); 
     });
+     setTimeout(this.recargar, 2000);
+  }
+
+  recargar(){ 
     location.reload();
   }
 
@@ -90,7 +97,7 @@ export class IdiomaComponent implements OnInit{
     this.idiomaService.editIdioma(this.editIdioma).subscribe(data => {
       console.log("Editado"); 
     });
-    location. reload();
+    setTimeout(this.recargar, 2000);
  }
 
   GetEditIdioma(id:number){

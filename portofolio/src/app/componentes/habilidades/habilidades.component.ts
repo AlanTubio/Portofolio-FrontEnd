@@ -64,6 +64,10 @@ export class HabilidadesComponent implements OnInit{
     this.habilidadService.addHabilidad(this.agregarHabilidad).subscribe(data => {
       console.log(data); 
     });
+    setTimeout(this.recargar, 2000);
+  }
+
+  recargar(){ 
     location.reload();
   }
 
@@ -77,7 +81,7 @@ export class HabilidadesComponent implements OnInit{
     this.habilidadService.Eliminar(id).subscribe(data => {
       console.log(data); 
     });
-    location.reload();
+    setTimeout(this.recargar, 2000);
   }
 
   EditarHabilidad(){
@@ -90,7 +94,7 @@ export class HabilidadesComponent implements OnInit{
     this.habilidadService.editHabilidad(this.editHabilidad).subscribe(data => {
       console.log("Editado"); 
     });
-    location. reload();
+    setTimeout(this.recargar, 2000);
  }
 
   GetEditHabilidad(id:number){

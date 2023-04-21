@@ -70,6 +70,10 @@ export class ExperienciasComponent implements OnInit{
       console.log("agregado"); 
     });
     console.log("agregado"); 
+    setTimeout(this.recargar, 2000);
+  }
+
+  recargar(){ 
     location.reload();
   }
 
@@ -83,7 +87,7 @@ export class ExperienciasComponent implements OnInit{
     this.experienciaService.Eliminar(id).subscribe(data => {
       console.log(data); 
     });
-    location.reload();
+    setTimeout(this.recargar, 2000);
   }
 
   Editarexp(){
@@ -98,7 +102,7 @@ export class ExperienciasComponent implements OnInit{
     this.experienciaService.editExperiencia(this.edit).subscribe(data => {
       console.log("Editado"); 
     });
-    location.reload();
+    setTimeout(this.recargar, 2000);
  }
 
   GetEdit(id:number){
